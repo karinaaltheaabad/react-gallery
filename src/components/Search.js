@@ -1,17 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
-class Search extends Component {
-
-    state = {
-        searchText: '',
-    }
-
-    onSearchChange = (e) => {
-        this.setState({
-            searchText: e.target.value
-        });
-    }
+class Search extends PureComponent {
 
     submitSearch = (e) => {
         e.preventDefault(); 
@@ -25,8 +15,12 @@ class Search extends Component {
         return(
             <form className="search-form" onSubmit={this.submitSearch}>
                 <input type="search" 
-                       onChange={this.onSearchChange} 
                        name="search" 
+                       //callback that allows you to get access to a DOM element 
+                       //takes a callback function (input) and returns this.query 
+                       //puts a reference to the input on the search class
+                       //executed immediately after component mounted to the dom
+                       //when input is rendered onto the page it returns a reference to input which you can access through this.query
                        ref={(input) => this.query = input}
                        placeholder="Search" required
                 />

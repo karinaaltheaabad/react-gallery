@@ -18,6 +18,7 @@ const PhotoPage = (props) => {
         <div className="photo-container">
             <ul>
                 {photos}
+                {console.log(photos)}
             </ul>
         </div>
     )
